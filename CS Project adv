@@ -1,0 +1,114 @@
+#Alejandro Alvarado
+#The program is supposed to be an adventure math game where your life depends
+#on getting the answer right.
+#As of right now, there are 4 different scenarios that will lead to two different endings.
+money = int(0)
+moneyx = str(money)
+moneyz = 0
+name = ""
+while not name:
+    name = input("Hello! What is your name? \n")
+print("Welcome, " + name + "." , "It is nice to meet you.")
+print("You have woken up from your slumber and appear to be stuck in a mysterious room")
+answer = input("There are two doors, which one will you cross? (left/right)\n").lower().strip()
+
+def goldenFairy(numf1, numf2):
+    if numf1 > numf2:
+        print("Nice! The fairy enjoys that you made the first number larger than the second.")
+        numf1 += 10
+        numf1 -= 2
+        numf1 *= 2
+        numf1 /= 2
+        numf1 %= 4
+        numf1 **= 3
+        numf1 //= 2
+        print("It does every shortcut operator imaginable, leaving your number as: "+ str(numf1))
+    elif numf1 < numf2:
+        print("The fairy is displeased.")
+        deathanswer = input("The fairy wants you to solve 12/2. If you get it wrong it will kill you.")
+        if deathanswer != "6":
+            print("You got the answer wrong, but its okay! The fairy was just kidding. It is a fairy after all.")
+        elif deathanswer == "6":
+            print("Good job! The fairy is now satisfied.")
+
+def goldenFairy2(magic):
+    for i in range(1, magic+1):
+        for j in range(1, magic+2 - i):
+            print(j, end=" ")
+        print()
+    
+def goldenFairy3(finalfairy):
+    while (finalfairy < 1) or (finalfairy > 4):
+        finalfairy = int(input("Wrong number, try again: "))
+        if (finalfairy < 5) and (finalfairy > 3):
+            print("The fairy is glad you chose 4")
+
+#choosing left
+if answer == "left":
+    moneyx = str(money + 5) #whenever doing a money statement, must have this
+    money = money + 5 #whenever doing a money statement, must have this
+    print("It seems you have chosen the safe option. You find on the ground some money, you now have " + moneyx + " dollars")
+    print("You now approach to what seems to be a section with a vending machine that only has the option to buy a key. The key costs five dollars.")
+    money_vend = input("Will you buy the key? (yes/no)\n").lower().strip()
+    if money_vend == "yes":
+        moneyx = str(money - 5)
+        print("You have purchased the key and have spent five dollars. You now have " + moneyx + " dollars")
+    else:
+        print("You saved your money and continue moving forward. You have " + moneyx + " dollars")
+    print("As you move forward, a golden fairy appears!")
+    numf1 = int(input("The fairy requests that you choose two numbers between 1 and 10: "))
+    numf2 = int(input("Enter the second number between 1 and 10: "))
+    goldenFairy(numf1, numf2)
+    print("The fairy now wants to show you some magic.")
+    magic = int(input("Enter any number: "))
+    goldenFairy2(magic)
+    print("The fairy is happy you stayed till the end to see everything, now it wants to ask you one more question.")
+    finalfairy = int(input("At last, the fairy asks for a number between 1 and 4:"))
+    goldenFairy3(finalfairy)
+
+    
+#choosing right
+elif answer == "right":
+    print("Oh no! A monster has appeared!")
+    answer = input("The monster seems to be blocking your path. The only way to get rid of it is to solve a question: what is 2 times 8? \n").lower().strip()
+    if answer == "16":
+        moneyx = str(money + 10)
+        money = money + 10
+        print("You survived.")
+        print("As a reward, the monster lets you pass and you gain 10 dollars! You now have " + moneyx + " dollars")
+        print("You continue to walk forward... where a few seconds later you hear a loud sound. \n ... \n ... ")
+        print("A magical spirit appears that grants you simple calculations! How insane!")
+        imaginary_money_multiplication = float(input("The spirit says that it will multiply your money by a desired amount right now, but at the same time you must spend a desired percentage of it and then after that it will be divided by a desired amount. \n By what amount do you want your money multiplied by? \n"))
+        money = money * imaginary_money_multiplication
+        print(money)
+        imaginary_money_divison = float(input("The spirit says to enter a division amonunt: \n"))
+        money = money / imaginary_money_divison
+        print(money)
+        imaginary_money_exponential = float(input("The spirit insists on doing more calculations. Enter the amount you want exponentially. \n"))
+        money = money ** imaginary_money_exponential
+        print(money)
+        imaginary_money_integer = float(input("The spirit wants you to divide by something again. \n"))
+        money = money // imaginary_money_integer
+        print(money)
+        imaginary_money_modulo = float(input("The spirits wants a number to get the remainder of a division problem. \n"))
+        money = money % imaginary_money_modulo
+        print("The spirit is satisfied. It wants to tell you that it had a great time doing calculations.")
+        print("Total spirit amount: ", format(money, ' .2f'), sep='')
+        print("Actual amount you have: ", format(money, ' .2f'), end='')
+    else:
+        print("You died.")
+    
+
+else:
+    print("Invalid choice, the game is now over.")
+
+
+
+
+
+
+
+
+
+#sources where I learned stuff
+    #https://www.youtube.com/watch?v=DEcFCn2ubSg (this helped me learn about the .lower().strip() feature.)
