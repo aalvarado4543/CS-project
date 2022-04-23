@@ -43,6 +43,18 @@ def goldenFairy3(finalfairy):
         if (finalfairy < 5) and (finalfairy > 3):
             print("The fairy is glad you chose 4")
 
+
+def get_integer(): #this is to ensure that the application does not crash from anything other than a number being input
+    while True:
+        x = input("Enter a number: ")
+
+        try:
+            return float(x)
+        except:
+            print("Invalid, try again")
+    z = get_integer()
+    print(z)
+
 #choosing left
 if answer == "left":
     moneyx = str(money + 5) #whenever doing a money statement, must have this
@@ -78,25 +90,60 @@ elif answer == "right":
         print("As a reward, the monster lets you pass and you gain 10 dollars! You now have " + moneyx + " dollars")
         print("You continue to walk forward... where a few seconds later you hear a loud sound. \n ... \n ... ")
         print("A magical spirit appears that grants you simple calculations! How insane!")
-        imaginary_money_multiplication = float(input("The spirit says that it will multiply your money by a desired amount right now, but at the same time you must spend a desired percentage of it and then after that it will be divided by a desired amount. \n By what amount do you want your money multiplied by? \n"))
-        money = money * imaginary_money_multiplication
+        print("The spirit says that it will multiply your money by a desired amount right now, but at the same time you must spend a desired percentage of it and then after that it will be divided by a desired amount. \n By what amount do you want your money multiplied by? \n")
+        multiplication_amount = get_integer()
+        money = money * multiplication_amount
         print(money)
-        imaginary_money_divison = float(input("The spirit says to enter a division amonunt: \n"))
-        money = money / imaginary_money_divison
+        print("The spirit says to enter a division amonunt: \n")
+        division_amount = get_integer()
+        money = money / division_amount
         print(money)
-        imaginary_money_exponential = float(input("The spirit insists on doing more calculations. Enter the amount you want exponentially. \n"))
-        money = money ** imaginary_money_exponential
+        print("The spirit insists on doing more calculations. Enter the amount you want exponentially. \n")
+        exponential_amount = get_integer()
+        money = money ** exponential_amount
         print(money)
-        imaginary_money_integer = float(input("The spirit wants you to divide by something again. \n"))
-        money = money // imaginary_money_integer
+        print("The spirit wants you to divide by something again. \n")
+        dagain = get_integer()
+        money = money // dagain
         print(money)
-        imaginary_money_modulo = float(input("The spirits wants a number to get the remainder of a division problem. \n"))
-        money = money % imaginary_money_modulo
+        print("The spirits wants a number to get the remainder of a division problem. \n")
+        modulo = get_integer()
+        money = money % modulo
         print("The spirit is satisfied. It wants to tell you that it had a great time doing calculations.")
         print("Total spirit amount: ", format(money, ' .2f'), sep='')
         print("Actual amount you have: ", format(money, ' .2f'), end='')
+        print("You now move on forward. As you go forward you see a demon that is about to attack you.")
+        problem1 = input("Quick! What is 3 x 7? ")
+        if problem1 != 21:
+            print("Nice one! But the demon isn't dead yet.")
+        else: print("The demon has killed you! Oh no!")
+        print("The demon is going to give you a hard question now. You're going to give a number-")
+        print("If the number is higher than 38, you will die and the demon will take your soul.")
+        print("Now quick! Give the demon a number!")
+        soul1 = get_integer()
+        soul1 = soul1 + 10
+        if soul1 > 38:
+            print("Oh no! The demon killed you! Game over.")
+        else:
+            print("Okay, the demon added that up to", format(soul1, ' .2f'), sep='')
+            print("Just one more time... the demon wants another number!")
+            print("Now quick! Give the demon another number!")
+            soul2 = get_integer()
+            soul1 = soul1 * soul2
+            if soul1 > 38:
+                print("Oh no! The demon killed you! Game over.")
+            else:
+                print("Nice one! You killed the demon!")
+                print("As the demon shrieks and disappears, everything around you starts to light up.")
+                print("You wake up to see yourself lying in a field of grass.")
+                print("You stand up and you realize you're finally home.")
+                print("Congratulations! You beat the game! Welcome home.")
     else:
         print("You died.")
+        
+                
+            
+        
     
 
 else:
